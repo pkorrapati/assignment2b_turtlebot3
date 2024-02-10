@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(Assignment2B_turtlebot3)
+project(assignment2b_turtlebot3)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -10,6 +10,9 @@ project(Assignment2B_turtlebot3)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+  std_srvs
+  geometry_msgs
+  rosgraph_msgs
 )
 
 ## System dependencies are found with CMake's conventions
