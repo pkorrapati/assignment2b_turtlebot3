@@ -2,10 +2,9 @@
 
 import rospy
 
-from math import pow, atan2, sqrt, pi, radians, degrees
+from math import pi, radians
 
 from geometry_msgs.msg import Twist
-from turtlesim.msg import Pose
 from std_srvs.srv import Empty
 
 # Remaps (-pi/2, pi/2) to (0, 2pi)
@@ -25,18 +24,11 @@ class TurtleBot:
         resetTurtle = rospy.ServiceProxy('/gazebo/reset_world', Empty)
         resetTurtle()
 
-        # Publisher which will publish to the topic '/turtle1/cmd_vel'.
+        # Publisher which will publish to the topic '/cmd_vel'.
         self.velocity_publisher = rospy.Publisher('/cmd_vel',
                                                   Twist, queue_size=3)
 
-        # # A subscriber to the topic '/turtle1/pose'. self.update_pose is called
-        # # when a message of type Pose is received.
-        # self.pose_subscriber = rospy.Subscriber('/turtle1/pose',
-        #                                         Pose, self.update_pose)
-
-        # self.pose = Pose()
-        self.rate = rospy.Rate(10)
-        # self.blank = True
+        self.rate = rospy.Rate(50)        
 
     # def update_pose(self, data):
     #     """Callback function which is called when a new message of type Pose is
