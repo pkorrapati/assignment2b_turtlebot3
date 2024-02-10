@@ -34,5 +34,5 @@ roslaunch assignment2b_turtlebot3 move.launch code:='square' w:=0.2 v:=0.2
 Launch square trajectory (Fast)
 
 ```console
-roslaunch assignment2b_turtlebot3 move.launch code:='square' w:=0.2 v:=0.2
+roslaunch assignment2b_turtlebot3 move.launch code:='square' w:=0.5 v:=0.5
 ```
