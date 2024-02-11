@@ -6,8 +6,13 @@ from math import pi, radians
 
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Empty
+from nav_msgs.msg import Odometry
 
-import time
+# import tf
+import tf2_ros
+import matplotlib.pyplot as plt
+
+# import numpy as np
 
 # Remaps (-pi/2, pi/2) to (0, 2pi)
 def remapAngle(angle):
@@ -27,8 +32,16 @@ class TurtleBot:
 
         # Publisher which will publish to the topic '/cmd_vel'.
         self.velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=3)
+        self.odom_subscriber = rospy.Subscriber('/odom', Odometry, self.update_pose)
+        self.tfBuffer = tf2_ros.Buffer()
+        self.tf_subber = tf2_ros.TransformListener(self.tfBuffer)
 
-        self.rate = rospy.Rate(100)        
+        self.rate = rospy.Rate(100)   
+        self.isAlive = False     
+
+    def update_pose(self, data):
+        if not self.isAlive:
+            self.isAlive = True
 
     def traverseCircle(self):
         """Move in a circle."""
@@ -39,7 +52,10 @@ class TurtleBot:
 
         vel_msg = Twist()
         
-        rotPeriod = 2*2.0*pi/w # Time period to rotate
+        rotPeriod = 2*pi/w # Time period to rotate
+
+        while not self.isAlive:
+            pass
 
         vel_msg.linear.x = 0
         vel_msg.linear.y = 0
@@ -57,7 +73,19 @@ class TurtleBot:
         # Using inbuilt function get_time that listens to /clock topic               
         t_start = rospy.get_time()
 
+        # print(self.tfBuffer.all_frames_as_yaml())
+
+        X =[]
+        Y =[]
+
         while rospy.get_time() <= t_start + rotPeriod:
+            try:                
+                trans = self.tfBuffer.lookup_transform('base_footprint', 'odom', rospy.Time()) #base_footprint
+                X.extend([trans.transform.translation.x])
+                Y.extend([trans.transform.translation.y])
+            except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+                continue
+
             # Linear velocity in the x-axis.
             vel_msg.linear.x = w * r
             vel_msg.linear.y = 0
@@ -83,6 +111,13 @@ class TurtleBot:
         vel_msg.angular.y = 0
         vel_msg.angular.z = 0
         self.velocity_publisher.publish(vel_msg)
+
+        plt.plot(X,Y)
+        plt.title('X-Y location of base_footprint')
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.axis('equal')
+        plt.show()
 
         # If we press control + C, the node will stop.
         rospy.spin()
