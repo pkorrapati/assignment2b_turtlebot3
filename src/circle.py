@@ -28,7 +28,7 @@ class TurtleBot:
         # Publisher which will publish to the topic '/cmd_vel'.
         self.velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=3)
 
-        self.rate = rospy.Rate(50)        
+        self.rate = rospy.Rate(100)        
 
     def traverseCircle(self):
         """Move in a circle."""
@@ -39,7 +39,7 @@ class TurtleBot:
 
         vel_msg = Twist()
         
-        rotPeriod = 2.01*pi/w # Time period to rotate
+        rotPeriod = 2*2.0*pi/w # Time period to rotate
 
         vel_msg.linear.x = 0
         vel_msg.linear.y = 0
@@ -57,7 +57,7 @@ class TurtleBot:
         # Using inbuilt function get_time that listens to /clock topic               
         t_start = rospy.get_time()
 
-        while rospy.get_time() < t_start + rotPeriod:
+        while rospy.get_time() <= t_start + rotPeriod:
             # Linear velocity in the x-axis.
             vel_msg.linear.x = w * r
             vel_msg.linear.y = 0
@@ -85,7 +85,7 @@ class TurtleBot:
         self.velocity_publisher.publish(vel_msg)
 
         # If we press control + C, the node will stop.
-        # rospy.spin()
+        rospy.spin()
 
 if __name__ == '__main__':
     try:
