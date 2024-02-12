@@ -8,11 +8,8 @@ from geometry_msgs.msg import Twist
 from std_srvs.srv import Empty
 from nav_msgs.msg import Odometry
 
-# import tf
 import tf2_ros
 import matplotlib.pyplot as plt
-
-# import numpy as np
 
 # Remaps (-pi/2, pi/2) to (0, 2pi)
 def remapAngle(angle):
@@ -75,14 +72,14 @@ class TurtleBot:
 
         # print(self.tfBuffer.all_frames_as_yaml())
 
-        X =[]
-        Y =[]
+        #X =[]
+        #Y =[]
 
         while rospy.get_time() <= t_start + rotPeriod:
             try:                
-                trans = self.tfBuffer.lookup_transform('base_footprint', 'odom', rospy.Time()) #base_footprint
-                X.extend([trans.transform.translation.x])
-                Y.extend([trans.transform.translation.y])
+                trans = self.tfBuffer.lookup_transform('odom', 'base_footprint', rospy.Time()) #base_footprint
+                # X.extend([trans.transform.translation.x])
+                # Y.extend([trans.transform.translation.y])
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 continue
 
@@ -112,15 +109,15 @@ class TurtleBot:
         vel_msg.angular.z = 0
         self.velocity_publisher.publish(vel_msg)
 
-        plt.plot(X,Y)
-        plt.title('X-Y location of base_footprint')
-        plt.xlabel('X')
-        plt.ylabel('Y')
-        plt.axis('equal')
-        plt.show()
+        # plt.plot(X,Y)
+        # plt.title('X-Y location of base_footprint')
+        # plt.xlabel('X')
+        # plt.ylabel('Y')
+        # plt.axis('equal')
+        # plt.show()
 
         # If we press control + C, the node will stop.
-        rospy.spin()
+        # rospy.spin()
 
 if __name__ == '__main__':
     try:
