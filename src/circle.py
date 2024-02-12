@@ -77,7 +77,7 @@ class TurtleBot:
 
         while rospy.get_time() <= t_start + rotPeriod:
             try:                
-                trans = self.tfBuffer.lookup_transform('base_footprint', 'odom', rospy.Time()) #base_footprint
+                trans = self.tfBuffer.lookup_transform('odom', 'base_footprint', rospy.Time()) #base_footprint
                 X.extend([trans.transform.translation.x])
                 Y.extend([trans.transform.translation.y])
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
