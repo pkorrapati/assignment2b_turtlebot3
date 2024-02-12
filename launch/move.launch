@@ -3,7 +3,7 @@
     <arg name='w' default='0.3' />
     <arg name='v' default='0.3' />
 
-    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch" />    
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch" />
     
     <group if="$(eval code == 'circle')">
         <node pkg="assignment2b_turtlebot3" type="circle.py" name="circle">

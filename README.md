@@ -1,5 +1,13 @@
 # Launching files
 
+## Prerequisites
+Needs matplotlib python library
+
+```console
+sudo apt install python3-pip
+python3 -m pip install matplotlib
+```
+
 ## Circular Trajectory
 Launch circular trajectory
 

@@ -8,11 +8,8 @@ from geometry_msgs.msg import Twist
 from std_srvs.srv import Empty
 from nav_msgs.msg import Odometry
 
-# import tf
 import tf2_ros
 import matplotlib.pyplot as plt
-
-# import numpy as np
 
 # Remaps (-pi/2, pi/2) to (0, 2pi)
 def remapAngle(angle):
@@ -120,7 +117,7 @@ class TurtleBot:
         plt.show()
 
         # If we press control + C, the node will stop.
-        rospy.spin()
+        # rospy.spin()
 
 if __name__ == '__main__':
     try:
