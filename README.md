@@ -24,13 +24,13 @@
 [<img src="https://img.youtube.com/vi/HPHVHBC1qM8/hqdefault.jpg"
 />](https://youtu.be/HPHVHBC1qM8)
 
-## Square, Normal [w=0.1]
+## Square, Normal [w=0.3]
 ![Image, Square Trajectory, Normal Speed, w=0.3](/images/Square_Speed_Normal.png)
 
 [<img src="https://img.youtube.com/vi/vcKnU5jD3Zs/hqdefault.jpg"
 />](https://youtu.be/vcKnU5jD3Zs)
 
-## Square, Fast [w=0.1]
+## Square, Fast [w=0.5]
 ![Image, Square Trajectory, Fast Speed,   w=0.5](/images/Square_Speed_Fast.png)
 
 [<img src="https://img.youtube.com/vi/VpMnhz8u0oI/hqdefault.jpg"
