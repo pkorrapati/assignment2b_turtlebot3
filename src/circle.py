@@ -30,6 +30,8 @@ class TurtleBot:
         # Publisher which will publish to the topic '/cmd_vel'.
         self.velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=3)
         self.odom_subscriber = rospy.Subscriber('/odom', Odometry, self.update_pose)
+
+        # Listen to tf frame
         self.tfBuffer = tf2_ros.Buffer()
         self.tf_subber = tf2_ros.TransformListener(self.tfBuffer)
 
@@ -51,9 +53,11 @@ class TurtleBot:
         
         rotPeriod = 2*pi/w # Time period to rotate
 
+        # wait for robot to spawn
         while not self.isAlive:
             pass
 
+        # Send a stop signal
         vel_msg.linear.x = 0
         vel_msg.linear.y = 0
         vel_msg.linear.z = 0
