@@ -18,7 +18,7 @@
 [<img src="https://img.youtube.com/vi/B_uCSd7c4_c/hqdefault.jpg"
 />](https://youtu.be/B_uCSd7c4_c)
 
-## Square, Slow [w=0.1]
+## Square, Slow [w=0.3]
 ![Image, Square Trajectory, Slow Speed,   w=0.1](/images/Square_Speed_Slow.png)
 
 [<img src="https://img.youtube.com/vi/HPHVHBC1qM8/hqdefault.jpg"
@@ -30,7 +30,7 @@
 [<img src="https://img.youtube.com/vi/vcKnU5jD3Zs/hqdefault.jpg"
 />](https://youtu.be/vcKnU5jD3Zs)
 
-## Square, Fast [w=0.1]
+## Square, Fast [w=0.5]
 ![Image, Square Trajectory, Fast Speed,   w=0.5](/images/Square_Speed_Fast.png)
 
 [<img src="https://img.youtube.com/vi/VpMnhz8u0oI/hqdefault.jpg"
