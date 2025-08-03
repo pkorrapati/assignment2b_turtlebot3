@@ -18,7 +18,7 @@
 [<img src="https://img.youtube.com/vi/B_uCSd7c4_c/hqdefault.jpg"
 />](https://youtu.be/B_uCSd7c4_c)
 
-## Square, Slow [w=0.1]
+## Square, Slow [w=0.3]
 ![Image, Square Trajectory, Slow Speed,   w=0.1](/images/Square_Speed_Slow.png)
 
 [<img src="https://img.youtube.com/vi/HPHVHBC1qM8/hqdefault.jpg"
